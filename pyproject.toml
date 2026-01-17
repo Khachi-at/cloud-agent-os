@@ -5,11 +5,70 @@ description = "Default template for PDM package"
 authors = [
     {name = "khachi", email = "hechl@chinatelecom.cn"},
 ]
-dependencies = []
+dependencies = ["langchain-openai>=1.1.7", "pytest>=9.0.2"]
 requires-python = "==3.13.*"
 readme = "README.md"
 license = {text = "MIT"}
 
-
 [tool.pdm]
 distribution = false
+python.use-pyenv = true
+
+[tool.pdm.dev-dependencies]
+dev = [
+    "pytest>=7.4.0",
+    "pytest-cov>=4.1.0",
+    "flake8>=6.0.0",
+    "pre-commit>=3.5.0",
+    "black>=23.12.0",
+    "isort>=5.13.0",
+]
+
+[tool.pdm.scripts]
+test = "python -m pytest tests/ -v"
+test-cov = "python -m pytest tests/ --cov=src --cov-report=html --cov-report=term"
+lint = "python -m flake8 src tests"
+format = "python -m black src tests"
+isort = "python -m isort src tests"
+mypy = "python -m mypy src tests"
+pre-commit-install = "pre-commit install"
+pre-commit-run = "pre-commit run --all-files"
+
+[tool.pytest.ini_options]
+minversion = "7.0"
+addopts = "-v --strict-markers"
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+
+[tool.black]
+line-length = 100
+target-version = ["py312"]
+include = '\.pyi?$'
+extend-exclude = '''
+/(
+  # directories
+  \.eggs
+  | \.git
+  | \.hg
+  | \.mypy_cache
+  | \.tox
+  | \.venv
+  | build
+  | dist
+)/
+'''
+
+[tool.isort]
+profile = "black"
+line_length = 100
+py_version = "312"
+skip_gitignore = true
+
+[tool.mypy]
+python_version = "3.13"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = false
+ignore_missing_imports = true

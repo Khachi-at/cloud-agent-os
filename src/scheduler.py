@@ -1,10 +1,10 @@
 from abc import ABC, abstractmethod
 from typing import List
+
 from models import Plan, Task
 
 
 class Scheduler(ABC):
-
     @abstractmethod
     def next_batch(self, plan: Plan) -> List[Task]:
         """

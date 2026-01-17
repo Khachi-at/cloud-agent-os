@@ -1,10 +1,10 @@
 from abc import ABC, abstractmethod
-from models import Task
+
 from context import ExecutionContext
+from models import Task
 
 
 class Executor(ABC):
-
     @abstractmethod
     def execute(self, task: Task, ctx: ExecutionContext) -> None:
         """

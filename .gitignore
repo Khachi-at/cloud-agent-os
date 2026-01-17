@@ -4,3 +4,21 @@ __pycache__/
 .pytest_cache/
 .ruff_cache/
 .pdm-python
+# Pre-commit
+.pre-commit-framework/
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# PDM
+.venv/
+pdm.lock
+
+# Project specific
+.pre-commit-config.local.yaml
+htmlcov/

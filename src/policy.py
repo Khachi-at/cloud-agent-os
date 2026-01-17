@@ -1,5 +1,6 @@
 from abc import ABC, abstractmethod
-from typing import Dict, Any
+from typing import Any, Dict
+
 from context import ExecutionContext
 
 
@@ -10,14 +11,9 @@ class PolicyDecision(str):
 
 
 class PolicyEngine(ABC):
-
     @abstractmethod
     def evaluate(
-        self,
-        subject: str,
-        action: str,
-        resource: Dict[str, Any],
-        ctx: ExecutionContext
+        self, subject: str, action: str, resource: Dict[str, Any], ctx: ExecutionContext
     ) -> Dict[str, Any]:
         """
         返回:

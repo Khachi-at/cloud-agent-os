@@ -167,7 +167,39 @@ Configuration is managed through `pyproject.toml`. Key settings:
 
 Run tests using:
 ```bash
-pdm run pytest tests/
+pdm run test
+pdm run test-cov    # With coverage report
+```
+
+## Code Quality
+
+This project uses pre-commit hooks to ensure code quality. Pre-commit hooks automatically run checks before each commit.
+
+### Pre-commit Hooks
+
+The project includes the following pre-commit hooks:
+- **Black**: Code formatting
+- **isort**: Import sorting
+- **Flake8**: Linting
+- **General checks**: Trailing whitespace, file endings, YAML validation, large files, merge conflicts
+
+### Setting up Pre-commit
+
+1. Install pre-commit hooks:
+```bash
+pdm run pre-commit-install
+```
+
+2. Run pre-commit checks manually:
+```bash
+pdm run pre-commit-run
+```
+
+3. Available code quality commands:
+```bash
+pdm run format      # Format code with Black
+pdm run isort       # Sort imports with isort
+pdm run lint        # Lint with flake8
 ```
 
 ## License

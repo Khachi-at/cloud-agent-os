@@ -1,9 +1,8 @@
 from abc import ABC, abstractmethod
-from typing import Dict, Any
+from typing import Any, Dict
 
 
 class ControlPlane(ABC):
-
     @abstractmethod
     def apply(self, kind: str, spec: Dict[str, Any]) -> Dict[str, Any]:
         """

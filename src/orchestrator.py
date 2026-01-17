@@ -1,17 +1,21 @@
-
-from models import TaskStatus, Task
+from audit import Auditor
 from context import ExecutionContext
+from executor import Executor
+from models import Task, TaskStatus
 from planner import Planner
 from policy import PolicyEngine
 from scheduler import Scheduler
-from executor import Executor
-from audit import Auditor
 
 
 class Orchestrator:
-
-    def __init__(self, planner: Planner, policy: PolicyEngine,
-                 scheduler: Scheduler, executor: Executor, auditor: Auditor):
+    def __init__(
+        self,
+        planner: Planner,
+        policy: PolicyEngine,
+        scheduler: Scheduler,
+        executor: Executor,
+        auditor: Auditor,
+    ):
         self.planner = planner
         self.policy = policy
         self.scheduler = scheduler
@@ -34,17 +38,10 @@ class Orchestrator:
 
     def _run_task(self, task: Task, ctx: ExecutionContext):
         decision = self.policy.evaluate(
-            subject="ai-agent",
-            action=task.action,
-            resource=task.params,
-            ctx=ctx
+            subject="ai-agent", action=task.action, resource=task.params, ctx=ctx
         )
 
-        self.auditor.record({
-            "event": "policy_decision",
-            "task": task.id,
-            "decision": decision
-        })
+        self.auditor.record({"event": "policy_decision", "task": task.id, "decision": decision})
 
         if decision["decision"] != "allow":
             task.status = TaskStatus.FAILED

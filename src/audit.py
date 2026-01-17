@@ -1,9 +1,8 @@
 from abc import ABC, abstractmethod
-from typing import Dict, Any
+from typing import Any, Dict
 
 
 class Auditor(ABC):
-
     @abstractmethod
     def record(self, event: Dict[str, Any]) -> None:
         """

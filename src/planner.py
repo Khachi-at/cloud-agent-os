@@ -1,10 +1,10 @@
 from abc import ABC, abstractmethod
-from models import Plan, Task
+
 from context import ExecutionContext
+from models import Plan, Task
 
 
 class Planner(ABC):
-
     @abstractmethod
     def plan(self, goal: str, ctx: ExecutionContext) -> Plan:
         """
