@@ -1,7 +1,7 @@
 from abc import ABC, abstractmethod
 from typing import Any, Dict
 
-from context import ExecutionContext
+from src.context import ExecutionContext
 
 
 class PolicyDecision(str):

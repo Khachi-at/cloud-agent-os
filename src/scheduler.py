@@ -1,7 +1,7 @@
 from abc import ABC, abstractmethod
 from typing import List
 
-from models import Plan, Task
+from src.models import Plan, Task
 
 
 class Scheduler(ABC):
