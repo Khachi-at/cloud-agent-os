@@ -1,0 +1,15 @@
+[project]
+name = "cloud-agent-os"
+version = "0.1.0"
+description = "Default template for PDM package"
+authors = [
+    {name = "khachi", email = "hechl@chinatelecom.cn"},
+]
+dependencies = []
+requires-python = "==3.13.*"
+readme = "README.md"
+license = {text = "MIT"}
+
+
+[tool.pdm]
+distribution = false
