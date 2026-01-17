@@ -1,0 +1,31 @@
+name: Python Package using PDM
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      max-parallel: 1
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python 3.13
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+
+      - name: Install PDM
+        uses: pdm-project/setup-pdm@v4
+        with:
+          python-version: "3.13"
+
+      - name: Install dependencies
+        run: pdm install
+
+      - name: Lint with flake8
+        run: pdm run flake8 src tests
+
+      - name: Test with pytest
+        run: pdm run pytest tests
