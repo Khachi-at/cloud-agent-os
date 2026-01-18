@@ -4,7 +4,7 @@ from pathlib import Path
 
 import pytest
 
-from src.context import ExecutionContext
+from core.context import ExecutionContext
 
 # Add src directory to Python path for imports
 project_root = Path(__file__).parent.parent

@@ -1,5 +1,5 @@
 """Tests for ExecutionContext"""
-from src.context import ExecutionContext
+from core.context import ExecutionContext
 
 
 class TestExecutionContext:
