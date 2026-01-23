@@ -25,7 +25,7 @@ jobs:
         run: pdm install
 
       - name: Lint with flake8
-        run: pdm run flake8 src tests
+        run: pdm run flake8 core tests
 
       - name: Test with pytest
         run: pdm run pytest tests

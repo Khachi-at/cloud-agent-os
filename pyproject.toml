@@ -26,11 +26,11 @@ dev = [
 
 [tool.pdm.scripts]
 test = "python -m pytest tests/ -v"
-test-cov = "python -m pytest tests/ --cov=src --cov-report=html --cov-report=term"
-lint = "python -m flake8 src tests"
-format = "python -m black src tests"
-isort = "python -m isort src tests"
-mypy = "python -m mypy src tests"
+test-cov = "python -m pytest tests/ --cov=core --cov-report=html --cov-report=term"
+lint = "python -m flake8 core tests"
+format = "python -m black core tests"
+isort = "python -m isort core tests"
+mypy = "python -m mypy core tests"
 pre-commit-install = "pre-commit install"
 pre-commit-run = "pre-commit run --all-files"
 
